@@ -49,10 +49,10 @@ CREATE TABLE VENDEDOR (
 );
 
 CREATE TABLE FORNECEDOR (
-		idFornecedor INTEGER	PRIMARY KEY,
-        cnpj INTEGER,
-        nome VARCHAR(500),
-        telefone INTEGER
+	idFornecedor INTEGER	PRIMARY KEY,
+	cnpj INTEGER,
+	nome VARCHAR(500),
+	telefone INTEGER
 );
 
 CREATE TABLE COMPRA (

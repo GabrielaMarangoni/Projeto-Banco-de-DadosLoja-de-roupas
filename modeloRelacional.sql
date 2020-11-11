@@ -25,12 +25,6 @@ CREATE TABLE FUNCIONARIO (
 
 CREATE TABLE ADM (
 	id INTEGER		PRIMARY KEY,
-	nome VARCHAR(500),
-	sexo VARCHAR(20),
-    salario DECIMAL(10,2),
-    dataN DATE,
-    cpf INTEGER,
-    telefone INTEGER,
     FOREIGN KEY(id) REFERENCES FUNCIONARIO(idFunc) ON DELETE CASCADE
 );
 
@@ -39,13 +33,7 @@ CREATE TABLE VENDEDOR (
 	comissão DECIMAL(10,2), 
     nivelDoVendedor VARCHAR(100),
     tempoDeServiço INTEGER, 
-    nome VARCHAR(500),
-	sexo VARCHAR(20),
-    salario DECIMAL(10,2),
-    dataN DATE,
-    cpf INTEGER,
-    telefone INTEGER,
-   FOREIGN KEY(id) REFERENCES FUNCIONARIO (idFunc) ON DELETE CASCADE
+	FOREIGN KEY(id) REFERENCES FUNCIONARIO (idFunc) ON DELETE CASCADE
 );
 
 CREATE TABLE FORNECEDOR (
@@ -75,10 +63,6 @@ CREATE TABLE CLIENTE (
 
 CREATE TABLE CLIJURIDICO (
 	id INTEGER		PRIMARY KEY,
-    sexo VARCHAR(20),
-    dataNasc DATE,
-    nome VARCHAR(500),
-    telefone INTEGER,
     cnpj INTEGER,
     razaoSocial VARCHAR(500),
     siteEmpresa VARCHAR(500),
@@ -87,10 +71,6 @@ CREATE TABLE CLIJURIDICO (
 
 CREATE TABLE CLIFISICO (
 	id INTEGER		PRIMARY KEY,
-    sexo VARCHAR(20),
-    dataNasc DATE,
-    nome VARCHAR(500),
-    telefone INTEGER,
     cpf INTEGER,
     emal VARCHAR(500),
     apelido VARCHAR(100),

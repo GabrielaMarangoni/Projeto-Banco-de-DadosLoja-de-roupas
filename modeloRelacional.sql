@@ -15,12 +15,12 @@ DROP TABLE IF EXISTS FUNCIONARIO;
 
 CREATE TABLE FUNCIONARIO (
 	idFunc INTEGER		PRIMARY KEY,
+    cpf VARCHAR(11),
 	nome VARCHAR(500),
 	sexo VARCHAR(20),
-    salario DECIMAL(10,2),
     dataN DATE,
-    cpf INTEGER,
-    telefone INTEGER
+    telefone  VARCHAR(20),
+    salario DECIMAL(10,2)
 );
 
 CREATE TABLE ADM (
@@ -32,38 +32,38 @@ CREATE TABLE VENDEDOR (
 	id INTEGER		PRIMARY KEY,
 	comissão DECIMAL(10,2), 
     nivelDoVendedor VARCHAR(100),
-    tempoDeServiço INTEGER, 
+    tempoDeServiço VARCHAR(100), 
 	FOREIGN KEY(id) REFERENCES FUNCIONARIO (idFunc) ON DELETE CASCADE
 );
 
 CREATE TABLE FORNECEDOR (
 	idFornecedor INTEGER	PRIMARY KEY,
-	cnpj INTEGER,
+	cnpj VARCHAR(14),
 	nome VARCHAR(500),
-	telefone INTEGER
+	telefone VARCHAR(20)
 );
 
 CREATE TABLE COMPRA (
 	idCompra INTEGER	PRIMARY KEY,
-    dataCompra DATE,
-    precoT DECIMAL(10,2),
     idFornecedor INTEGER	NOT NULL,
     idADM INTEGER	NOT NULL,
+    dataCompra DATE,
+    precoT DECIMAL(10,2),
     FOREIGN KEY (idFornecedor) REFERENCES FORNECEDOR (idFornecedor),
     FOREIGN KEY (idADM) REFERENCES ADM (id)
 );
 
 CREATE TABLE CLIENTE (
 	idCliente INTEGER	PRIMARY KEY,
+    nome VARCHAR(500),
     sexo VARCHAR(20),
     dataNasc DATE,
-    nome VARCHAR(500),
-    telefone INTEGER
+    telefone  VARCHAR(20)
 );
 
 CREATE TABLE CLIJURIDICO (
 	id INTEGER		PRIMARY KEY,
-    cnpj INTEGER,
+    cnpj VARCHAR(14),
     razaoSocial VARCHAR(500),
     siteEmpresa VARCHAR(500),
     FOREIGN KEY (id) REFERENCES CLIENTE (idCliente) ON DELETE CASCADE
@@ -71,18 +71,18 @@ CREATE TABLE CLIJURIDICO (
 
 CREATE TABLE CLIFISICO (
 	id INTEGER		PRIMARY KEY,
-    cpf INTEGER,
-    emal VARCHAR(500),
     apelido VARCHAR(100),
+    cpf VARCHAR(11),
+    email VARCHAR(500),
     FOREIGN KEY (id) REFERENCES CLIENTE (idCliente) ON DELETE CASCADE
 );
 
 CREATE TABLE VENDA (
 	idVenda INTEGER 	PRIMARY KEY,
-    preçoT DECIMAL(10,2),
-    dataVenda DATE,
     idFun INTEGER  	NOT NULL,
     idCli INTEGER 	NOT NULL,
+    preçoT DECIMAL(10,2),
+    dataVenda DATE,
     FOREIGN KEY (idFun) REFERENCES VENDEDOR (id),
     FOREIGN KEY (idCli) REFERENCES CLIENTE (idCliente)
 );
@@ -105,7 +105,8 @@ CREATE TABLE PECA (
 CREATE TABLE COMPRA_PECA (
 	idC INTEGER,
     descricao VARCHAR(500),
-     PRIMARY KEY(idC, descricao),
+    qtde INTEGER,
+    PRIMARY KEY(idC, descricao),
     FOREIGN KEY (idC) REFERENCES COMPRA (idCompra),
     FOREIGN KEY (descricao) REFERENCES PECA (descricao)
 );
@@ -113,6 +114,7 @@ CREATE TABLE COMPRA_PECA (
 CREATE TABLE VENDA_PECA (
 	idV INTEGER,
     descricao VARCHAR(500),
+    qtde INTEGER, 
     PRIMARY KEY(idV, descricao),
     FOREIGN KEY (idV) REFERENCES VENDA (idVenda),
 	FOREIGN KEY (descricao) REFERENCES PECA (descricao)
@@ -120,6 +122,7 @@ CREATE TABLE VENDA_PECA (
 
 CREATE TABLE PECA_CONDICIONAL (
 	id INTEGER,
+    qtde INTEGER,
 	descricao VARCHAR(500),
 	PRIMARY KEY(id, descricao),
     FOREIGN KEY (id) REFERENCES CONDICIONAL (idCond),

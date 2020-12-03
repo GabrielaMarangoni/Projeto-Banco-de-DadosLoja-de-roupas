@@ -23,7 +23,7 @@ INSERT INTO FUNCIONARIO(idFunc, cpf, nome, sexo, dataN, telefone,  salario) VALU
 INSERT INTO ADM(id) VALUES
 (003), (006), (008), (014), (015), (016), (017), (018), (019), (020);
 
-INSERT INTO VENDEDOR(id, comissão, nivelDoVendedor, tempoDeServiço) VALUES
+INSERT INTO VENDEDOR(id, comissao, nivelDoVendedor, tempoDeServico) VALUES
 (001, 500.25, 'Junior', '1 ano'),
 (002, 200.14, 'Junior', '3 meses'),
 (004, 0.00, 'Junior', '5 meses'),
@@ -31,7 +31,7 @@ INSERT INTO VENDEDOR(id, comissão, nivelDoVendedor, tempoDeServiço) VALUES
 (007, 600, 'Contratado', '2anos'),
 (009, 45.76, 'Contratado', '1 ano e 4 meses'),
 (010, 34.12, 'Contratado', '3 anos'),
-(011, 30.87, 'Estagiário', '2 meses'),
+(011, 700, 'Estagiário', '2 meses'),
 (012, 100.00, 'Contratado', '4 anos'),
 (013, 99.87, 'Contratado', '2anos e 4 meses');
 
@@ -50,6 +50,7 @@ INSERT INTO FORNECEDOR( idFornecedor, cnpj,	nome, telefone) VALUES
 INSERT INTO COMPRA(idCompra, idFornecedor, idADM, dataCompra, precoT) VALUES 
 (000, 500, 014, '2019-12-12', 9999.00),
 (111, 800, 003, '2020-01-10', 1826.01),
+(1111, 800, 018, '2020-01-10', 1826.01),
 (222, 100, 020, '2020-02-11', 200.00),
 (333, 200, 019, '2019-11-30', 345.40),
 (444, 000, 018, '2020-07-27', 1060.00),
@@ -107,16 +108,17 @@ INSERT INTO CLIFISICO (id, apelido, cpf, email) VALUES
 (020, 'Juh', '09872675650', 'ju@hotmail.com');
 
 INSERT INTO VENDA (idVenda, idFun, idCli, preçoT, dataVenda) VALUES
-(000, 011 , 004, 99.99, '2020-02-03'),
+(000, 011 , 004, 1091.90, '2020-02-03'),
 (111, 001, 001, 40.00, '2020-10-20'),
 (222, 002, 001, 54.54, '2019-01-03'),
 (333, 010, 013, 401.09, '2020-10-04'), 
-(444, 011, 020, 171.12, '2020-09-10'),
+(444, 011, 020, 171.12, '2020-09-12'),
 (555, 012, 018, 140.00, '2020-09-12'),
 (666, 009, 009, 230.00, '2019-12-23'),
 (777, 005, 002, 120.99, '2020-10-01'),
 (888, 013, 011, 104.54, '2020-01-17'),
-(999, 007, 016, 70.00, '2020-02-14');
+(999, 007, 016, 1091.90, '2020-02-14'),
+(1000, 009, 009, 50.99, '2019-11-23');
 
 INSERT INTO CONDICIONAL (idCond, idCli, qtde, descricao, preco) VALUES 
 (000, 005, 1, 'Blusa Top',  34.54),
@@ -194,4 +196,25 @@ INSERT INTO VENDA_PECA(idV, qtde, descricao) VALUES
 (777, 1, 'Saia'),
 (888, 1, 'Blusa Top'),
 (888, 1, 'Saia'),
-(999, 1, 'Saia');
+(999, 1, 'Saia'),
+(999, 1, 'Vestido'),
+(999, 1, 'Vestido Farm'),
+(999, 1, 'Blusa básica'),
+(999, 1, 'Blusa Top'),
+(999, 1, 'Calça Farm'),
+(999, 1, 'Calça'),
+(999, 1, 'Blusa'), 
+(999, 1, 'Shorts'),
+(999, 1, 'Macacão Farm'),
+(999, 1, 'Saia Pink'),
+(000, 1, 'Saia'),
+(000, 1, 'Vestido Farm'),
+(000, 1, 'Blusa básica'),
+(000, 1, 'Blusa Top'),
+(000, 1, 'Calça Farm'),
+(000, 1, 'Calça'),
+(000, 1, 'Blusa'), 
+(000, 1, 'Shorts'),
+(000, 1, 'Macacão Farm'),
+(000, 1, 'Saia Pink'),
+(1000, 1, 'Blusa');
